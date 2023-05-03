@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">GymNation</a>
+            <a class="navbar-brand" href="{% url 'get_about_page' %}">GymNation</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Our Team</a>
+                        <a class="nav-link" href="{% url 'get_our_team_page' %}">Our Team</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -28,18 +28,18 @@
                             Classes
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Spin</a></li>
-                            <li><a class="dropdown-item" href="#">BodyBuild</a></li>
+                            <li><a class="dropdown-item" href="{% url 'get_classes_page' %}">Spin</a></li>
+                            <li><a class="dropdown-item" href="{% url 'get_classes_page' %}">BodyBuild</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Swimming</a></li>
+                            <li><a class="dropdown-item" href="{% url 'get_classes_page' %}">Swimming</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" abindex="-1">Shop</a>
+                        <a class="nav-link" href="{% url 'get_shop_page' %}" tabindex="-1" abindex="-1">Shop</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1">Contact Us</a>
+                        <a class="nav-link" href="{% url 'get_contact_us_page' %}" tabindex="-1">Contact Us</a>
                     </li>
                 </ul>
             </div>
