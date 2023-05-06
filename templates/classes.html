@@ -3,4 +3,26 @@
 {% block title %}GymNation - Classes{% endblock %}
 {% block content %}
 <h1>Classes</h1>
-{% endblock %}
+
+<div class="container-fluid">
+    <div class="row justify-content-start">
+        {% for session in session_list %}
+        <div class="col-4">
+            <div class="card">
+                <img src="https://dlye1hka1kz5z.cloudfront.net/media/blog_images/How_Often_Should_You_Go_To_The_Gym_Does_Protein_Intake_Affect_The_Answer_2x.jpg"
+                    class="card-img-top" alt="...">
+                <h5>
+                    <div class="card-title">{{ session.title }}</div>
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Date: {{ session.date }}</li>
+                    <li class="list-group-item">Time: {{ session.start_time }} - {{ session.end_time }}</li>
+                    <li class="list-group-item">Location: {{ session.location }}</li>
+                    <li class="list-group-item">Availbility: {{ session.number_attending }} / {{ session.capacity }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}

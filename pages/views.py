@@ -1,4 +1,13 @@
 from django.shortcuts import render
+from django.views import generic
+from .models import Session
+
+
+class SessionList(generic.ListView):
+    model = Session
+    queryset = Session.objects.order_by('-created_on')
+    template_name = 'classes.html'
+    paginate_by = 6
 
 
 def get_about_page(request):

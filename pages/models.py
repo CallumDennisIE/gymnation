@@ -16,7 +16,7 @@ class Session(models.Model):
     capacity = models.IntegerField(default=0)
     attendance = models.ManyToManyField(
         User, related_name='session_attendance', blank=True)
-    location = models.CharField(max_length=200, unique=True)
+    location = models.CharField(max_length=200)
     featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
