@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8004-callumdennisie-gymnation-n8mmy88mdb.us2.codeanyapp.com',
+ALLOWED_HOSTS = ['8000-callumdennisie-gymnation-n8mmy88mdb.us2.codeanyapp.com',
                  "gymnation.herokuapp.com", "localhost"]
 
 
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'crispy_forms',
+    'crispy_bootstrap4',
     'pages',
     'bootstrap5'
 ]
@@ -60,7 +61,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-CRISPY_TEMPLATE_PACK = 'bootsrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
