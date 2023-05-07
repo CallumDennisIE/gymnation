@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
 from .models import Session
+from .forms import ReviewForm
 
 
 class SessionList(generic.ListView):
@@ -14,6 +15,7 @@ class SessionDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Session.objects
         session = get_object_or_404(queryset, slug=slug)
+        reviews = session.reviews.order_by('created_on')
         attending = False
         if session.attendance.filter(id=self.request.user.id).exists():
             attending = True
@@ -23,7 +25,9 @@ class SessionDetail(View):
             "session_detail.html",
             {
                 "session": session,
-                "attending": attending
+                "reviews": reviews,
+                "attending": attending,
+                "review_form": ReviewForm()
             },
         )
 

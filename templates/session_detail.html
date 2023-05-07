@@ -1,20 +1,58 @@
 {% extends 'base.html' %} {% block content %}
 
+{% load crispy_forms_tags %}
 
-
-<div class="card text-center">
-    <div class="card-header">
-        <h1 class="card-title">{{ session.title }}</h1>
-        <p class="card-subtitle mb-2 text-muted">Trainer: {{ session.trainer }}</p>
+<div class="container">
+    <div class="row">
+        <div class="card text-center">
+            <div class="card-header">
+                <h1 class="card-title">{{ session.title }}</h1>
+                <p class="card-subtitle mb-2 text-muted">Trainer: {{ session.trainer }}</p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ session.about }}</p>
+                <p class="card-text">Date: {{ session.date }}</p>
+                <p class="card-text">Time: {{ session.start_time }} - {{ session.end_time }}</p>
+                <p class="card-text">Location: {{ session.location }}</p>
+                <p class="card-text">Availbility: {{ session.number_attending }} / {{ session.capacity }}</p>
+                <a href="#" class="btn btn-primary">Book {{ session.title }}</a>
+            </div>
+        </div>
     </div>
-    <div class="card-body">
-        <p class="card-text">{{ session.about }}</p>
-        <p class="card-text">Date: {{ session.date }}</p>
-        <p class="card-text">Time: {{ session.start_time }} - {{ session.end_time }}</p>
-        <p class="card-text">Location: {{ session.location }}</p>
-        <p class="card-text">Availbility: {{ session.number_attending }} / {{ session.capacity }}</p>
-        <a href="#" class="btn btn-primary">Book {{ session.title }}</a>
-    </div>
-</div>
+    <div class="row">
+        <div class="card text-center ">
+            <h3>Reviews:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+                {% for review in reviews %}
+                <div class="reviews" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                        {{ review.name }}
+                        <span class=" text-muted font-weight-normal">
+                            <!-- The comment's created date goes here -->
+                            {{ review.created_on }}
+                        </span> wrote:
+                    </p>
+                    <!-- The body of the comment goes before the | -->
+                    {{ review.body | linebreaks }}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="card text-center">
+                <div class="card-body">
+                    {% if user.is_authenticated %}
 
-{% endblock content %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    {% endblock content %}
