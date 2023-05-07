@@ -49,12 +49,10 @@ class Review(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    rating = models.IntegerField(choices=RATING_CHOICES)
+    # rating = models.IntegerField(choices=RATING_CHOICES)
 
     class Meta:
         ordering = ['created_on']
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
-

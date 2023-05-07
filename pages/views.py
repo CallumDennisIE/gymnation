@@ -26,6 +26,38 @@ class SessionDetail(View):
             {
                 "session": session,
                 "reviews": reviews,
+                "reviewed": False,
+                "attending": attending,
+                "review_form": ReviewForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Session.objects
+        session = get_object_or_404(queryset, slug=slug)
+        reviews = session.reviews.order_by('created_on')
+        attending = False
+        if session.attendance.filter(id=self.request.user.id).exists():
+            attending = True
+
+        review_form = ReviewForm(data=request.POST)
+
+        if review_form.is_valid():
+            review_form.instance.email = request.user.email
+            review_form.instance.name = request.user.username
+            review = review_form.save(commit=False)
+            review.session = session
+            review.save()
+        else:
+            review_form = ReviewForm()
+
+        return render(
+            request,
+            "session_detail.html",
+            {
+                "session": session,
+                "reviews": reviews,
+                "reviewed": True,
                 "attending": attending,
                 "review_form": ReviewForm()
             },

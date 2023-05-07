@@ -12,6 +12,6 @@ class SessionAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('name', 'body', 'rating', 'session', 'created_on')
-    list_filter = ('created_on', 'rating')
+    list_display = ('name', 'body', 'session', 'created_on')
+    list_filter = ('created_on',)
     search_filter = ('name', 'session__name', 'email', 'body')
