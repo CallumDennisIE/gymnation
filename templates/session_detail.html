@@ -14,8 +14,25 @@
                 <p class="card-text">Date: {{ session.date }}</p>
                 <p class="card-text">Time: {{ session.start_time }} - {{ session.end_time }}</p>
                 <p class="card-text">Location: {{ session.location }}</p>
-                <p class="card-text">Availbility: {{ session.number_attending }} / {{ session.capacity }}</p>
+                <p class="card-text">Availability: {{ session.number_attending }} / {{ session.capacity }}</p>
                 <a href="#" class="btn btn-primary">Book {{ session.title }}</a>
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'session_attend' session.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if attending %}
+
+                        <button type="submit" value="{{session.slug}}"><i class="fa-solid fa-circle-check"></i></button>
+
+                        {% else %}
+
+                        <button type="submit" value="{{session.slug}}"><i
+                                class="fa-regular fa-circle-check"></i></button>
+
+                        {% endif %}
+                    </form>
+                    {% endif %}
+                </strong>
             </div>
         </div>
     </div>
