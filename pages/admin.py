@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Session, Review
+from .models import Session, Review, Membership
 
 
 @admin.register(Session)
@@ -15,3 +15,8 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ('name', 'body', 'session', 'created_on')
     list_filter = ('created_on',)
     search_filter = ('name', 'session__name', 'email', 'body')
+
+
+@admin.register(Membership)
+class MembershipAdmin(admin.ModelAdmin):
+    list_display = ('user', 'member_type')
