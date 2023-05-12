@@ -8,5 +8,6 @@ urlpatterns = [
     path('attend/<slug:slug>', views.SessionAttend.as_view(), name='session_attend'),
     path('our-team/', views.get_our_team_page, name='our_team'),
     path('shop/', views.get_shop_page, name='shop'),
-    path('contact-us/', views.get_contact_us_page, name='contact_us')
+    path('contact-us/', views.get_contact_us_page, name='contact_us'),
+    path('profile/', views.get_profile_page, name='profile'),
 ]

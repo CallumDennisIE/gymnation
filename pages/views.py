@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Session
@@ -66,7 +67,6 @@ class SessionDetail(View):
 
 
 class SessionAttend(View):
-
     def post(self, request, slug):
         session = get_object_or_404(Session, slug=slug)
 
@@ -76,6 +76,11 @@ class SessionAttend(View):
             session.attendance.add(request.user)
 
         return HttpResponseRedirect(reverse('session_detail', args=[slug]))
+
+
+@login_required()
+def get_profile_page(request):
+    return render(request, 'profile.html')
 
 
 def get_about_page(request):
