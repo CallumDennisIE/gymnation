@@ -16,7 +16,7 @@ class Session(models.Model):
     date = models.DateField()
     trainer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="gym_session")
-    capacity = models.IntegerField(default=0)
+    capacity = models.PositiveSmallIntegerField(default=0)
     attendance = models.ManyToManyField(
         User, related_name='session_attendance', blank=True)
     location = models.CharField(max_length=200)
