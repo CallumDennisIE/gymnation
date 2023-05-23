@@ -11,6 +11,7 @@ class Session(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     about = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    modified_on = models.DateTimeField(auto_now=True)
     start_time = models.TimeField()
     end_time = models.TimeField()
     date = models.DateField()
@@ -52,6 +53,7 @@ class Review(models.Model):
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+    modified_on = models.DateTimeField(auto_now=True)
     # rating = models.IntegerField(choices=RATING_CHOICES)
 
     class Meta:
@@ -65,6 +67,8 @@ class Membership(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     member_type = models.CharField(max_length=200, default="Basic")
     start_date = models.DateField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    modified_on = models.DateTimeField(auto_now=True)
 
     # https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
     @receiver(post_save, sender=User)
